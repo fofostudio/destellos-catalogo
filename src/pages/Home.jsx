@@ -247,19 +247,32 @@ export default function Home() {
       </section>
 
       {/* ═══════════════════════════════════════════
-          GALLERY STRIP — Full width
+          GALLERY — Infinite marquee
       ═══════════════════════════════════════════ */}
       <section className="py-16 md:py-20 bg-neutral-900 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10 animate-fade-in-up">
           <p className="text-xs uppercase tracking-[0.3em] text-rose-400 font-semibold mb-2">Galería</p>
           <h2 className="text-3xl md:text-4xl font-bold text-white">Nuestro trabajo</h2>
         </div>
-        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-4 px-4 scroll-smooth">
-          {GALLERY.map((src, i) => (
-            <div key={i} className="flex-shrink-0 w-72 md:w-80 aspect-[4/5] rounded-2xl overflow-hidden snap-center glass-card-dark">
-              <img src={src} alt={`Galería ${i + 1}`} className="w-full h-full object-cover" loading="lazy" />
-            </div>
-          ))}
+        {/* Marquee row — duplicated for seamless loop */}
+        <div className="group/marquee relative">
+          {/* Fade edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-neutral-900 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-neutral-900 to-transparent z-10 pointer-events-none" />
+          <div className="flex gap-4 animate-marquee group-hover/marquee:[animation-play-state:paused]">
+            {[...GALLERY, ...GALLERY, ...GALLERY, ...GALLERY].map((src, i) => {
+              const sizes = ['h-48 w-36', 'h-64 w-48', 'h-56 w-40', 'h-52 w-44', 'h-60 w-44', 'h-48 w-40'];
+              const sizeClass = sizes[i % sizes.length];
+              return (
+                <div
+                  key={i}
+                  className={`flex-shrink-0 ${sizeClass} rounded-2xl overflow-hidden border border-neutral-700/40 transition-all duration-500 hover:scale-110 hover:z-20 hover:shadow-2xl hover:border-rose-500/40 cursor-pointer`}
+                >
+                  <img src={src} alt={`Galería ${(i % GALLERY.length) + 1}`} className="w-full h-full object-cover" loading="lazy" />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </section>
 

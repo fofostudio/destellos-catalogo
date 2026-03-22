@@ -13,6 +13,9 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const loc = useLocation();
 
+  // Only the home page gets the transparent hero treatment
+  const isHome = loc.pathname === '/';
+
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', fn, { passive: true });
@@ -21,12 +24,16 @@ export default function Navbar() {
 
   useEffect(() => { setOpen(false); }, [loc.pathname]);
 
+  // Nav background logic:
+  // Home + not scrolled → transparent (hero is dark)
+  // Home + scrolled → dark blur
+  // Other pages → always solid dark
+  const navBg = (!isHome || scrolled)
+    ? 'backdrop-blur-2xl bg-neutral-950/95 shadow-[0_4px_24px_rgba(0,0,0,0.3)] border-b border-white/[0.06]'
+    : 'bg-transparent';
+
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      scrolled
-        ? 'backdrop-blur-2xl bg-neutral-950/80 shadow-[0_8px_32px_rgba(0,0,0,0.4)] border-b border-white/[0.06]'
-        : 'bg-transparent'
-    }`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${navBg}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
           <Link to="/" className="flex items-center gap-3 group">
@@ -42,7 +49,7 @@ export default function Navbar() {
                 to={to}
                 className={`group relative flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-xl transition-all duration-200 ${
                   loc.pathname === to
-                    ? 'text-rose-400 glass-light'
+                    ? 'text-rose-400 bg-white/[0.1]'
                     : 'text-neutral-300 hover:text-white hover:bg-white/[0.06]'
                 }`}
               >
@@ -65,7 +72,7 @@ export default function Navbar() {
           {/* Mobile toggle */}
           <button
             onClick={() => setOpen(!open)}
-            className="lg:hidden p-2.5 rounded-xl glass transition-colors"
+            className="lg:hidden p-2.5 rounded-xl bg-white/[0.08] border border-white/[0.12] transition-colors"
             aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
           >
             <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -78,16 +85,16 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile */}
-      <div className={`lg:hidden overflow-hidden transition-all duration-400 ease-in-out ${open ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
-        <div className="backdrop-blur-2xl bg-neutral-950/90 border-t border-white/[0.06] px-4 pt-3 pb-6 space-y-1">
+      {/* Mobile menu */}
+      <div className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${open ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+        <div className="backdrop-blur-2xl bg-neutral-950/95 border-t border-white/[0.06] px-4 pt-3 pb-6 space-y-1">
           {links.map(({ to, label, icon }) => (
             <Link
               key={to}
               to={to}
               className={`flex items-center gap-3 px-4 py-3.5 text-base font-medium rounded-2xl transition-all duration-200 ${
                 loc.pathname === to
-                  ? 'glass-light text-white'
+                  ? 'bg-white/[0.1] text-white'
                   : 'text-neutral-300 hover:bg-white/[0.06] hover:text-white'
               }`}
             >
@@ -99,7 +106,7 @@ export default function Navbar() {
             href={getWhatsAppUrl('Hola, me interesa conocer sus productos')}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 px-4 py-3.5 text-base font-semibold rounded-2xl bg-emerald-500/90 text-white mt-3"
+            className="flex items-center gap-3 px-4 py-3.5 text-base font-semibold rounded-2xl bg-emerald-500 text-white mt-3"
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.52 3.48A11.78 11.78 0 0012 0 12 12 0 000 12a11.9 11.9 0 001.64 6.03L0 24l6.15-1.61A12 12 0 1012 0c3.2 0 6.2 1.25 8.52 3.48z"/></svg>
             Escríbenos por WhatsApp

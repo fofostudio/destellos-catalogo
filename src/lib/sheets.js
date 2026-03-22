@@ -126,8 +126,17 @@ function clean(val) {
 }
 
 // ── Column indices ──
-// A=0: Molde | P=15: Venta Final Unidad | Q=16: Docena | U=20: FOTO_URL
-// V=21: CATEGORIA | W=22: MOSTRAR (TRUE/FALSE checkbox)
+// A=0:  Molde
+// P=15: Venta Final Unidad
+// Q=16: Docena
+// U=20: FOTO_URL           (imagen principal)
+// V=21: CATEGORIA
+// W=22: MOSTRAR             (checkbox TRUE/FALSE)
+// X=23: FOTO_URL_2          (galería secundaria)
+// Y=24: FOTO_URL_3
+// Z=25: FOTO_URL_4
+// AA=26: FOTO_URL_5
+// ... columnas adicionales se leen dinámicamente
 
 export async function fetchProducts() {
   const res = await fetch(SHEETS_CSV_URL);
@@ -147,30 +156,37 @@ export async function fetchProducts() {
     const priceDozen = parsePrice(cols[16]);
     if (!priceUnit) continue;
 
-    // FOTO_URL (col U = index 20)
+    // FOTO_URL principal (col U = index 20)
     const fotoUrl = clean(cols[20]);
 
-    // CATEGORIA (col V = index 21) — falls back to hardcoded map
+    // CATEGORIA (col V = index 21)
     const sheetCategory = clean(cols[21]);
 
-    // MOSTRAR (col W = index 22) — checkbox outputs TRUE/FALSE
-    // If the column doesn't exist yet, default to showing the product
+    // MOSTRAR (col W = index 22)
     const mostrarRaw = clean(cols[22]).toUpperCase();
     const mostrar = mostrarRaw === 'FALSE' ? false : true;
-    // ^ Shows product if: TRUE, empty, or column doesn't exist yet
 
-    if (!mostrar) continue; // Skip hidden products
+    if (!mostrar) continue;
 
     const slug = slugify(name);
-    const driveImg = normalizeDriveUrl(fotoUrl);
+    const mainDriveImg = normalizeDriveUrl(fotoUrl);
+    const mainImage = mainDriveImg || LOCAL_IMAGES[slug] || '';
     const category = sheetCategory || CATEGORY_FALLBACK[slug] || 'Otros';
+
+    // Gallery: read FOTO_URL_2 (col 23), FOTO_URL_3 (col 24), etc.
+    const gallery = [mainImage].filter(Boolean);
+    for (let i = 23; i < cols.length; i++) {
+      const url = normalizeDriveUrl(clean(cols[i]));
+      if (url) gallery.push(url);
+    }
 
     products.push({
       name,
       slug,
       priceUnit,
       priceDozen,
-      image: driveImg || LOCAL_IMAGES[slug] || '',
+      image: mainImage,
+      images: gallery,
       description: DESCRIPTIONS[slug] || '',
       category,
     });

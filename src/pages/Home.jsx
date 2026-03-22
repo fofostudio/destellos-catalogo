@@ -16,7 +16,21 @@ const GALLERY = [
 export default function Home() {
   const { products, loading } = useProducts();
   const [heroIdx, setHeroIdx] = useState(0);
-  const spotlight = products[0];
+  const [spotlightIdx, setSpotlightIdx] = useState(null);
+
+  // Pick a random spotlight product once products load
+  useEffect(() => {
+    if (products.length > 0 && spotlightIdx === null) {
+      const withImage = products.filter((p) => p.image);
+      const pool = withImage.length > 0 ? withImage : products;
+      setSpotlightIdx(Math.floor(Math.random() * pool.length));
+    }
+  }, [products, spotlightIdx]);
+
+  const spotlightPool = products.filter((p) => p.image).length > 0
+    ? products.filter((p) => p.image)
+    : products;
+  const spotlight = spotlightIdx !== null ? spotlightPool[spotlightIdx % spotlightPool.length] : null;
 
   useEffect(() => {
     if (GALLERY.length <= 1) return;
@@ -149,7 +163,7 @@ export default function Home() {
                     </div>
                   )}
                 </div>
-                <div className="absolute -top-4 -left-4 glass rounded-2xl px-5 py-3 shadow-xl animate-float">
+                <div className="absolute -top-4 -left-4 backdrop-blur-2xl bg-neutral-900/80 border border-neutral-700/60 rounded-2xl px-5 py-3 shadow-2xl animate-float">
                   <p className="text-[10px] uppercase tracking-[0.18em] text-neutral-400">Destellos</p>
                   <p className="text-sm font-semibold text-white">{products.length}+ piezas únicas</p>
                 </div>

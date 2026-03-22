@@ -59,10 +59,20 @@ export default function Navbar() {
             ))}
 
             <a
+              href="/catalogo.pdf"
+              download
+              className="ml-2 inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-neutral-400 hover:text-white bg-white/[0.06] hover:bg-white/[0.1] rounded-lg transition-all"
+              aria-label="Descargar catálogo PDF"
+            >
+              <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16" /></svg>
+              PDF
+            </a>
+
+            <a
               href={getWhatsAppUrl('Hola, me interesa conocer sus productos')}
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-2 inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-white text-sm font-semibold rounded-full transition-all duration-200 shadow-lg glow-emerald"
+              className="ml-1 inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-white text-sm font-semibold rounded-full transition-all duration-200 shadow-lg glow-emerald"
             >
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.52 3.48A11.78 11.78 0 0012 0 12 12 0 000 12a11.9 11.9 0 001.64 6.03L0 24l6.15-1.61A12 12 0 1012 0c3.2 0 6.2 1.25 8.52 3.48zM12 21.5a9.5 9.5 0 01-4.84-1.31l-.35-.21-3.64.96.97-3.55-.22-.37A9.48 9.48 0 1121.5 12 9.51 9.51 0 0112 21.5zm5.36-7.34c-.3-.15-1.76-.86-2.03-.96s-.47-.15-.67.15-.77.96-.95 1.16-.35.22-.64.07a7.7 7.7 0 01-2.27-1.4 8.55 8.55 0 01-1.58-2c-.16-.3 0-.46.12-.61s.3-.35.45-.52a2 2 0 00.3-.5.57.57 0 000-.52c0-.15-.67-1.61-.92-2.2s-.49-.51-.67-.52h-.57a1.11 1.11 0 00-.8.38 3.34 3.34 0 00-1.05 2.49 5.8 5.8 0 001.23 3.05 13.2 13.2 0 005.06 4.83 17.29 17.29 0 001.71.63 4.1 4.1 0 001.88.12 3.06 3.06 0 002-1.4 2.52 2.52 0 00.17-1.4c-.07-.12-.27-.19-.57-.33z"/></svg>
               WhatsApp
@@ -103,10 +113,18 @@ export default function Navbar() {
             </Link>
           ))}
           <a
+            href="/catalogo.pdf"
+            download
+            className="flex items-center gap-3 px-4 py-3.5 text-base font-medium rounded-2xl text-neutral-300 hover:bg-white/[0.06] hover:text-white transition-colors mt-2"
+          >
+            <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16" /></svg>
+            Descargar Catálogo PDF
+          </a>
+          <a
             href={getWhatsAppUrl('Hola, me interesa conocer sus productos')}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-3 px-4 py-3.5 text-base font-semibold rounded-2xl bg-emerald-500 text-white mt-3"
+            className="flex items-center gap-3 px-4 py-3.5 text-base font-semibold rounded-2xl bg-emerald-500 text-white mt-1"
           >
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.52 3.48A11.78 11.78 0 0012 0 12 12 0 000 12a11.9 11.9 0 001.64 6.03L0 24l6.15-1.61A12 12 0 1012 0c3.2 0 6.2 1.25 8.52 3.48z"/></svg>
             Escríbenos por WhatsApp

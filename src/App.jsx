@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import WhatsAppFloat from '@/components/WhatsAppFloat';
+import CatalogPopup from '@/components/CatalogPopup';
 import Home from '@/pages/Home';
 import Catalogo from '@/pages/Catalogo';
 import ProductDetail from '@/pages/ProductDetail';
@@ -21,6 +22,7 @@ export default function App() {
       </main>
       <Footer />
       <WhatsAppFloat />
+      <CatalogPopup />
     </div>
   );
 }

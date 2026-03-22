@@ -1,6 +1,6 @@
 export const WHATSAPP_NUMBER = '573143008425';
 export const STORE_NAME = 'Destellos';
-export const STORE_TAGLINE = 'Velas artesanales de cera de soya';
+export const STORE_TAGLINE = 'Velas para momentos únicos';
 export const STORE_DESCRIPTION = 'Cada pieza nace con dedicación, creatividad y amor por lo artesanal, para transformar cualquier espacio en un refugio de calma, armonía y belleza.';
 
 // Google Sheets published CSV URL

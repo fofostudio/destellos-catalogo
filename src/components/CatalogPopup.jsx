@@ -59,8 +59,9 @@ export default function CatalogPopup() {
             Ahora no
           </button>
           <a
-            href="/catalogo.pdf"
-            download
+            href="https://drive.google.com/uc?export=download&id=1JeH5KzfDb0VF6Nm0US4U6hYjbqgNGeK2"
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={dismiss}
             className="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 text-sm font-bold rounded-xl bg-rose-500 hover:bg-rose-600 text-white transition-colors shadow-lg glow-rose"
           >

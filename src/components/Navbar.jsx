@@ -59,8 +59,9 @@ export default function Navbar() {
             ))}
 
             <a
-              href="/catalogo.pdf"
-              download
+              href="https://drive.google.com/uc?export=download&id=1JeH5KzfDb0VF6Nm0US4U6hYjbqgNGeK2"
+              target="_blank"
+              rel="noopener noreferrer"
               className="ml-2 inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-neutral-400 hover:text-white bg-white/[0.06] hover:bg-white/[0.1] rounded-lg transition-all"
               aria-label="Descargar catálogo PDF"
             >
@@ -113,8 +114,9 @@ export default function Navbar() {
             </Link>
           ))}
           <a
-            href="/catalogo.pdf"
-            download
+            href="https://drive.google.com/uc?export=download&id=1JeH5KzfDb0VF6Nm0US4U6hYjbqgNGeK2"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-3 px-4 py-3.5 text-base font-medium rounded-2xl text-neutral-300 hover:bg-white/[0.06] hover:text-white transition-colors mt-2"
           >
             <svg className="w-5 h-5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16" /></svg>

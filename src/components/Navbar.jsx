@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { STORE_NAME, getWhatsAppUrl } from '@/lib/config';
+import { STORE_NAME, getWhatsAppUrl, WA_MESSAGES } from '@/lib/config';
 
 const links = [
   { to: '/', label: 'Inicio', icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6' },
@@ -70,7 +70,7 @@ export default function Navbar() {
             </a>
 
             <a
-              href={getWhatsAppUrl('Hola, me interesa conocer sus productos')}
+              href={getWhatsAppUrl(WA_MESSAGES.navbar)}
               target="_blank"
               rel="noopener noreferrer"
               className="ml-1 inline-flex items-center gap-2 px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-white text-sm font-semibold rounded-full transition-all duration-200 shadow-lg glow-emerald"
@@ -123,7 +123,7 @@ export default function Navbar() {
             Descargar Catálogo PDF
           </a>
           <a
-            href={getWhatsAppUrl('Hola, me interesa conocer sus productos')}
+            href={getWhatsAppUrl(WA_MESSAGES.navbar)}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 px-4 py-3.5 text-base font-semibold rounded-2xl bg-emerald-500 text-white mt-1"

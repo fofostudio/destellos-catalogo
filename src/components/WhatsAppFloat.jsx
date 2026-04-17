@@ -1,9 +1,9 @@
-import { getWhatsAppUrl } from '@/lib/config';
+import { getWhatsAppUrl, WA_MESSAGES } from '@/lib/config';
 
 export default function WhatsAppFloat() {
   return (
     <a
-      href={getWhatsAppUrl('Hola, me interesa conocer sus productos')}
+      href={getWhatsAppUrl(WA_MESSAGES.floating)}
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-emerald-500 hover:bg-emerald-400 text-white rounded-full shadow-2xl glow-emerald flex items-center justify-center transition-all duration-300 hover:scale-110 animate-scale-in delay-500"

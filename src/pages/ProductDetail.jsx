@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useProducts } from '@/hooks/useProducts';
 import ProductCard from '@/components/ProductCard';
-import { formatPriceCOP, getProductWhatsAppUrl, getWhatsAppUrl } from '@/lib/config';
+import { formatPriceCOP, getProductWhatsAppUrl, getProductDozenWhatsAppUrl } from '@/lib/config';
 
 export default function ProductDetail() {
   const { slug } = useParams();
@@ -253,7 +253,7 @@ export default function ProductDetail() {
                   Pedir por WhatsApp
                 </a>
                 <a
-                  href={getWhatsAppUrl(`Hola, quiero pedir ${product.name} por docena`)}
+                  href={getProductDozenWhatsAppUrl(product)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 w-full px-6 py-3.5 border-2 border-neutral-300 hover:border-neutral-400 text-neutral-700 text-sm font-semibold rounded-2xl transition-all duration-200"

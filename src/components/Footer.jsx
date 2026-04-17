@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { STORE_NAME, getWhatsAppUrl } from '@/lib/config';
+import { STORE_NAME, getWhatsAppUrl, WA_MESSAGES } from '@/lib/config';
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -20,7 +20,7 @@ export default function Footer() {
               Creemos en el poder de los detalles que iluminan la vida: cada pieza nace con dedicación, creatividad y un profundo amor por lo artesanal.
             </p>
             <a
-              href={getWhatsAppUrl('Hola, quiero información sobre sus productos')}
+              href={getWhatsAppUrl(WA_MESSAGES.footer)}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/20 border border-emerald-500/30 hover:bg-emerald-500/30 text-emerald-400 text-sm font-medium rounded-full transition-colors"

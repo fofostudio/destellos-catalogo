@@ -1,11 +1,11 @@
-import { getWhatsAppUrl, STORE_NAME } from '@/lib/config';
+import { getWhatsAppUrl, STORE_NAME, WA_MESSAGES } from '@/lib/config';
 
 export default function Contacto() {
   const options = [
-    { label: 'Pedidos individuales', desc: 'Compra una o varias unidades de tus velas favoritas.', msg: 'Hola, quiero hacer un pedido de velas', icon: 'M16 11V7a4 4 0 00-8 0v4M5 9h14l-1 12H6L5 9z' },
-    { label: 'Pedidos por docena', desc: 'Precios especiales en compras al por mayor.', msg: 'Hola, me interesa un pedido por docena', icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10' },
-    { label: 'Eventos y empresas', desc: 'Cotiza velas para bodas, baby showers y eventos corporativos.', msg: 'Hola, quiero cotizar velas para un evento especial', icon: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' },
-    { label: 'Personalización', desc: 'Aroma, color y empaque a tu gusto.', msg: 'Hola, me gustaría personalizar un pedido de velas', icon: 'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z' },
+    { label: 'Pedidos individuales', desc: 'Compra una o varias unidades de tus velas favoritas.', msg: WA_MESSAGES.contactSingle, icon: 'M16 11V7a4 4 0 00-8 0v4M5 9h14l-1 12H6L5 9z' },
+    { label: 'Pedidos por docena', desc: 'Precios especiales en compras al por mayor.', msg: WA_MESSAGES.contactDozen, icon: 'M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10' },
+    { label: 'Eventos y empresas', desc: 'Cotiza velas para bodas, baby showers y eventos corporativos.', msg: WA_MESSAGES.contactEvent, icon: 'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' },
+    { label: 'Personalización', desc: 'Aroma, color y empaque a tu gusto.', msg: WA_MESSAGES.contactCustom, icon: 'M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z' },
   ];
 
   return (

@@ -4,14 +4,13 @@ import { useProducts } from '@/hooks/useProducts';
 import ProductCard from '@/components/ProductCard';
 import { STORE_NAME, STORE_DESCRIPTION, getWhatsAppUrl, formatPriceCOP, WA_MESSAGES } from '@/lib/config';
 
-const GALLERY = [
-  '/images/gallery/gallery-1.jpg',
-  '/images/gallery/gallery-2.jpg',
-  '/images/gallery/gallery-3.png',
-  '/images/gallery/gallery-4.png',
-  '/images/gallery/gallery-5.png',
-  '/images/gallery/gallery-6.png',
-];
+const galleryModules = import.meta.glob(
+  '../assets/gallery/*.{jpg,jpeg,png,webp,avif,gif,JPG,JPEG,PNG,WEBP,AVIF,GIF}',
+  { eager: true, query: '?url', import: 'default' }
+);
+const GALLERY = Object.entries(galleryModules)
+  .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }))
+  .map(([, url]) => url);
 
 export default function Home() {
   const { products, loading } = useProducts();
